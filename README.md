@@ -1,10 +1,10 @@
 # Email-Spammer-Java
 ## A tool to send multiple emails, written in Java
 
-###1. Compiling: <br/> 
+### 1. Compiling: <br/> 
 ```javac -cp javax.mail.jar SendEmailTLS.java```
 
-###2. Running <br/> 
+### 2. Running <br/> 
 
 On Windows: <br/> 
 ```java -cp .;javax.mail.jar SendEmailTLS senders.txt receivers.txt content.txt```
