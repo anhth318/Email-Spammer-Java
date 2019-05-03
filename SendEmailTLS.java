@@ -103,7 +103,7 @@ public class SendEmailTLS {
 					
 					//Check if there still be a receiver to send
 					if(strReceiver == null) {
-						logWriter.println(dateFormat.format(date) + " There is no more receiver email to send! Exit the app.");
+						logWriter.println(dateFormat.format(date.getTime()) + " There is no more receiver email to send! Exit the app.");
 						System.out.println("There is no more receiver email to send! Exit the app.");
 						receiverReader.close();
 						System.exit(0);
