@@ -123,7 +123,7 @@ public class SendEmailTLS {
 			            //Send the email
 			            Transport.send(message);
 			            sentEmailNumber++;
-			            logWriter.println(dateFormat.format(date) + " " + uname + " sends email to " + strReceiver);
+			            logWriter.println(dateFormat.format(date.getTime()) + " " + uname + " sends email to " + strReceiver);
 			            System.out.println(sentEmailNumber + ". " +  uname + " sends email to " + strReceiver);
 
 			        } catch (MessagingException e) {
@@ -137,7 +137,7 @@ public class SendEmailTLS {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        logWriter.println(dateFormat.format(date) + " Done");
+        logWriter.println(dateFormat.format(date.getTime()) + " Done");
         System.out.println("Done - Totally " + sentEmailNumber + " emails have been sent!");
     }
     
