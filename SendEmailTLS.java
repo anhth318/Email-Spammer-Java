@@ -19,9 +19,10 @@ import java.text.SimpleDateFormat;
 public class SendEmailTLS {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, UnsupportedEncodingException {
-    	int MAX_EMAIL_PER_USER = 140;
+    	int MAX_EMAIL_PER_USER = 140; 
     	String subject = "[SoICT 2019] CFP || Final Submission Deadline: 14 August 2019 || Hanoi - Halong Bay, Vietnam, 5-6 December 2019";
     	//Read the senders.txt file
+    	String senderName = "SOICT 2019";
     	String[] username = new String[10];
     	String[] password = new String[10];
     	int senderNumber=0; 
@@ -61,9 +62,11 @@ public class SendEmailTLS {
 		
         Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
+        //prop.put("mail.smtp.host", "smtp.mandrillapp.com");
         prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true"); //TLS
+
         
       //Read the content of the email from the content.txt file
         String emailContent = "";
@@ -111,7 +114,9 @@ public class SendEmailTLS {
 										
 					try {						
 			            Message message = new MimeMessage(session);
-			            message.setFrom(new InternetAddress(uname));
+			            InternetAddress me = new InternetAddress("soict@gmail.vn");
+			            me.setPersonal(senderName);
+			            message.setFrom(me);
 			            message.setRecipients(
 			                    Message.RecipientType.TO,
 			                    InternetAddress.parse(strReceiver)
