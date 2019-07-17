@@ -23,8 +23,8 @@ public class SendEmailTLS {
     	String subject = "[SoICT 2019] CFP || Final Submission Deadline: 14 August 2019 || Hanoi - Halong Bay, Vietnam, 5-6 December 2019";
     	//Read the senders.txt file
     	String senderName = "SOICT 2019";
-    	String[] username = new String[10];
-    	String[] password = new String[10];
+    	String[] username = new String[20];
+    	String[] password = new String[20];
     	int senderNumber=0; 
     	int sentEmailNumber = 0;
     	
