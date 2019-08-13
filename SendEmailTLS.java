@@ -3,24 +3,34 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import java.util.Date;
+//import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+//import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
+//import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
 
 public class SendEmailTLS {
+	
+	public static int getRandomNumberInRange(int min, int max) {
+        if (min >= max) {
+        	throw new IllegalArgumentException("max must be greater than min");
+        }
+
+	Random r = new Random();
+	return r.nextInt((max - min) + 1) + min;
+	}
 
     public static void main(String[] args) throws IOException, FileNotFoundException, UnsupportedEncodingException {
     	int MAX_EMAIL_PER_USER = 140; 
-    	String subject = "[SoICT 2019] CFP || Final Submission Deadline: 14 August 2019 || Hanoi - Halong Bay, Vietnam, 5-6 December 2019";
+    	String subject = "[SoICT 2019] CFP || Final Submission Deadline: 5 September 2019 || Hanoi - Halong Bay, Vietnam, 4-6 December 2019";
     	//Read the senders.txt file
     	String senderName = "SOICT 2019";
     	String[] username = new String[20];
@@ -28,11 +38,11 @@ public class SendEmailTLS {
     	int senderNumber=0; 
     	int sentEmailNumber = 0;
     	
-    	FileWriter fw = new FileWriter("log.txt", true);
-    	BufferedWriter bw = new BufferedWriter(fw);
-    	PrintWriter logWriter = new PrintWriter(bw);
-    	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    	Date date = new Date();
+    	//FileWriter fw = new FileWriter("log.txt", true);
+    	//BufferedWriter bw = new BufferedWriter(fw);
+    	//PrintWriter logWriter = new PrintWriter(bw);
+    	//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	//Date date = new Date();
     	    	
 		try {
 			BufferedReader senderReader = new BufferedReader(new FileReader(args[0]));
@@ -106,7 +116,7 @@ public class SendEmailTLS {
 					
 					//Check if there still be a receiver to send
 					if(strReceiver == null) {
-						logWriter.println(dateFormat.format(date.getTime()) + " There is no more receiver email to send! Exit the app.");
+						//logWriter.println(dateFormat.format(date.getTime()) + " There is no more receiver email to send! Exit the app.");
 						System.out.println("There is no more receiver email to send! Exit the app.");
 						receiverReader.close();
 						System.exit(0);
@@ -127,8 +137,18 @@ public class SendEmailTLS {
 			            
 			            //Send the email
 			            Transport.send(message);
+			            
+			            //Sleep 5-10s randomly 
+					    /*int sleep_para = getRandomNumberInRange(5, 10);
+					    try {
+							Thread.sleep(sleep_para * 1000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}*/
+					    
 			            sentEmailNumber++;
-			            logWriter.println(dateFormat.format(date.getTime()) + " " + uname + " sends email to " + strReceiver);
+			            //logWriter.println(dateFormat.format(date.getTime()) + " " + uname + " sends email to " + strReceiver);
 			            System.out.println(sentEmailNumber + ". " +  uname + " sends email to " + strReceiver);
 
 			        } catch (MessagingException e) {
@@ -142,7 +162,7 @@ public class SendEmailTLS {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        logWriter.println(dateFormat.format(date.getTime()) + " Done");
+        //logWriter.println(dateFormat.format(date.getTime()) + " Done");
         System.out.println("Done - Totally " + sentEmailNumber + " emails have been sent!");
     }
     
