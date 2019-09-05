@@ -30,7 +30,7 @@ public class SendEmailTLS {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, UnsupportedEncodingException {
     	int MAX_EMAIL_PER_USER = 140; 
-    	String subject = "[SoICT 2019] CFP || Final Submission Deadline: 5 September 2019 || Hanoi - Halong Bay, Vietnam, 4-6 December 2019";
+    	String subject = "[SoICT 2019] CFP || Final Submission Deadline: 10 September 2019 || Hanoi - Halong Bay, Vietnam, 4-6 December 2019";
     	//Read the senders.txt file
     	String senderName = "SOICT 2019";
     	String[] username = new String[20];
