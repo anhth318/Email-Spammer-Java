@@ -33,7 +33,7 @@ public class SendEmailTLS {
     	String subject = "SoICT 2022: The 11th International Symposium on Information and Communication Technology\n" + 
     			"Hanoi, Vietnam, 1, 2 December 2022";
     	//Read the senders.txt file
-    	String senderName = "HSPR 2021";
+    	String senderName = "SoICT 2022";
     	String[] username = new String[20];
     	String[] password = new String[20];
     	int senderNumber=0; 
